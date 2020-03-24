@@ -28,9 +28,15 @@ endmacro()
 macro(_populate_Widgets_target_properties Configuration LIB_LOCATION IMPLIB_LOCATION
       IsDebugAndRelease)
     set_property(TARGET Qt5::Widgets APPEND PROPERTY IMPORTED_CONFIGURATIONS ${Configuration})
-
-    set(imported_location "${_qt5Widgets_install_prefix}/../../bin/${LIB_LOCATION}")
+if(WIN32)
+    set(imported_location "${_qt5Widgets_install_prefix}/../../bin/windows/${LIB_LOCATION}")
     _qt5_Widgets_check_file_exists(${imported_location})
+endif(WIN32)
+
+if(UNIX)
+    set(imported_location "${_qt5Widgets_install_prefix}/../../lib/linux/${LIB_LOCATION}")
+    _qt5_Widgets_check_file_exists(${imported_location})
+endif(UNIX)
     set(_deps
         ${_Qt5Widgets_LIB_DEPENDENCIES}
     )
@@ -39,6 +45,9 @@ macro(_populate_Widgets_target_properties Configuration LIB_LOCATION IMPLIB_LOCA
 
     set_target_properties(Qt5::Widgets PROPERTIES
         "IMPORTED_LOCATION_${Configuration}" ${imported_location}
+if(UNIX)
+        "IMPORTED_SONAME_${Configuration}" "libQt5Widgets.so.5"
+endif(UNIX)
         # For backward compatibility with CMake < 2.8.12
         "IMPORTED_LINK_INTERFACE_LIBRARIES_${Configuration}" "${_deps};${_static_deps}"
     )
@@ -46,14 +55,15 @@ macro(_populate_Widgets_target_properties Configuration LIB_LOCATION IMPLIB_LOCA
                  "${_deps}"
     )
 
-
-    set(imported_implib "${_qt5Widgets_install_prefix}/../../lib/${IMPLIB_LOCATION}")
+if(WIN32)
+    set(imported_implib "${_qt5Widgets_install_prefix}/../../lib/windows/${IMPLIB_LOCATION}")
     _qt5_Widgets_check_file_exists(${imported_implib})
     if(NOT "${IMPLIB_LOCATION}" STREQUAL "")
         set_target_properties(Qt5::Widgets PROPERTIES
         "IMPORTED_IMPLIB_${Configuration}" ${imported_implib}
         )
     endif()
+endif(WIN32)
 endmacro()
 
 if (NOT TARGET Qt5::Widgets)
@@ -182,14 +192,20 @@ if (NOT TARGET Qt5::Widgets)
         )
     endif()
 
+if(WIN32)
     _populate_Widgets_target_properties(RELEASE "Qt5Widgets.dll" "libQt5Widgets.a" FALSE)
 
     if (EXISTS
-        "${_qt5Widgets_install_prefix}/bin/Qt5Widgets.dll"
+        "${_qt5Widgets_install_prefix}/bin/windows/Qt5Widgets.dll"
       AND EXISTS
-        "${_qt5Widgets_install_prefix}/lib/libQt5Widgets.a" )
+        "${_qt5Widgets_install_prefix}/lib/windows/libQt5Widgets.a" )
         _populate_Widgets_target_properties(DEBUG "Qt5Widgets.dll" "libQt5Widgets.a" FALSE)
     endif()
+endif(WIN32)
+
+if(UNIX)
+    _populate_Widgets_target_properties(RELEASE "libQt5Widgets.so.5.14.1" "" FALSE)
+endif(UNIX)
 
 
 

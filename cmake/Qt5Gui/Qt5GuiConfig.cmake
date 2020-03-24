@@ -28,9 +28,16 @@ endmacro()
 macro(_populate_Gui_target_properties Configuration LIB_LOCATION IMPLIB_LOCATION
       IsDebugAndRelease)
     set_property(TARGET Qt5::Gui APPEND PROPERTY IMPORTED_CONFIGURATIONS ${Configuration})
-
-    set(imported_location "${_qt5Gui_install_prefix}/../../bin/${LIB_LOCATION}")
+if(WIN32)
+    set(imported_location "${_qt5Gui_install_prefix}/../../bin/windows/${LIB_LOCATION}")
     _qt5_Gui_check_file_exists(${imported_location})
+endif(WIN32)
+
+if(UNIX)
+    set(imported_location "${_qt5Gui_install_prefix}/../../bin/linux/${LIB_LOCATION}")
+    _qt5_Gui_check_file_exists(${imported_location})
+endif(UNIX)
+
     set(_deps
         ${_Qt5Gui_LIB_DEPENDENCIES}
     )
@@ -40,20 +47,24 @@ macro(_populate_Gui_target_properties Configuration LIB_LOCATION IMPLIB_LOCATION
     set_target_properties(Qt5::Gui PROPERTIES
         "IMPORTED_LOCATION_${Configuration}" ${imported_location}
         # For backward compatibility with CMake < 2.8.12
+if(UNIX)
+    "IMPORTED_SONAME_${Configuration}" "libQt5Gui.so.5"    
+endif(UNIX)
         "IMPORTED_LINK_INTERFACE_LIBRARIES_${Configuration}" "${_deps};${_static_deps}"
     )
     set_property(TARGET Qt5::Gui APPEND PROPERTY INTERFACE_LINK_LIBRARIES
                  "${_deps}"
     )
 
-
-    set(imported_implib "${_qt5Gui_install_prefix}/../../lib/${IMPLIB_LOCATION}")
+if(WIN32)
+    set(imported_implib "${_qt5Gui_install_prefix}/../../lib/windows/${IMPLIB_LOCATION}")
     _qt5_Gui_check_file_exists(${imported_implib})
     if(NOT "${IMPLIB_LOCATION}" STREQUAL "")
         set_target_properties(Qt5::Gui PROPERTIES
         "IMPORTED_IMPLIB_${Configuration}" ${imported_implib}
         )
     endif()
+endif(WIN32)
 endmacro()
 
 if (NOT TARGET Qt5::Gui)
@@ -182,14 +193,20 @@ if (NOT TARGET Qt5::Gui)
         )
     endif()
 
+if(WIN32)
     _populate_Gui_target_properties(RELEASE "Qt5Gui.dll" "libQt5Gui.a" FALSE)
 
     if (EXISTS
-        "${_qt5Gui_install_prefix}/bin/Qt5Gui.dll"
+        "${_qt5Gui_install_prefix}/bin/windows/Qt5Gui.dll"
       AND EXISTS
-        "${_qt5Gui_install_prefix}/lib/libQt5Gui.a" )
+        "${_qt5Gui_install_prefix}/lib/windows/libQt5Gui.a" )
         _populate_Gui_target_properties(DEBUG "Qt5Gui.dll" "libQt5Gui.a" FALSE)
     endif()
+endif(WIN32)
+
+if(UNIX)
+    _populate_Gui_target_properties(RELEASE "libQt5Gui.so.5.14.1" "" FALSE)
+endif(UNIX)
 
 
 

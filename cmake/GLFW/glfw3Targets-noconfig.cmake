@@ -13,7 +13,7 @@ set_target_properties(glfw PROPERTIES
   )
 
 list(APPEND _IMPORT_CHECK_TARGETS glfw )
-list(APPEND _IMPORT_CHECK_FILES_FOR_glfw "${_IMPORT_PREFIX}/lib/libglfw3.a" )
+list(APPEND _IMPORT_CHECK_FILES_FOR_glfw "${_IMPORT_PREFIX}/lib/windows/libglfw3.a" )
 
 # Commands beyond this point should not need to know the version.
 set(CMAKE_IMPORT_FILE_VERSION)

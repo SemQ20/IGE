@@ -5,7 +5,7 @@ set(Qt5Core_DIR "../cmake/Qt5Core")
 #Qt5Gui cmake config dir
 set(Qt5Gui_DIR "../cmake/Qt5Gui")
 #Qt5 cmake config dir
-set(Qt5_DIR "../cmake/QT5")
+set(Qt5_DIR "../cmake/Qt5")
 #GLFW cmake config dir
 set(glfw3_DIR "../cmake/GLFW")
 

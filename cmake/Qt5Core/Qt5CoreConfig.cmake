@@ -28,9 +28,20 @@ endmacro()
 macro(_populate_Core_target_properties Configuration LIB_LOCATION IMPLIB_LOCATION
       IsDebugAndRelease)
     set_property(TARGET Qt5::Core APPEND PROPERTY IMPORTED_CONFIGURATIONS ${Configuration})
-
-    set(imported_location "${_qt5Core_install_prefix}/../../bin/${LIB_LOCATION}")
+#WINDOWS
+if(WIN32)
+    set(imported_location "${_qt5Core_install_prefix}/../../bin/windows/${LIB_LOCATION}")
     _qt5_Core_check_file_exists(${imported_location})
+endif(WIN32)
+
+#UNIX
+if(UNIX)
+    set(imported_location "${_qt5Core_install_prefix}/../../bin/linux/${LIB_LOCATION}")
+    _qt5_Core_check_file_exists(${imported_location})
+endif(UNIX)
+
+#MAYBE MACOS
+###################
     set(_deps
         ${_Qt5Core_LIB_DEPENDENCIES}
     )
@@ -39,6 +50,9 @@ macro(_populate_Core_target_properties Configuration LIB_LOCATION IMPLIB_LOCATIO
 
     set_target_properties(Qt5::Core PROPERTIES
         "IMPORTED_LOCATION_${Configuration}" ${imported_location}
+    if(UNIX)
+        "IMPORTED_SONAME_${Configuration}" "libQt5Core.so.5"
+    endif(UNIX)
         # For backward compatibility with CMake < 2.8.12
         "IMPORTED_LINK_INTERFACE_LIBRARIES_${Configuration}" "${_deps};${_static_deps}"
     )
@@ -46,14 +60,15 @@ macro(_populate_Core_target_properties Configuration LIB_LOCATION IMPLIB_LOCATIO
                  "${_deps}"
     )
 
-
-    set(imported_implib "${_qt5Core_install_prefix}/../../lib/${IMPLIB_LOCATION}")
+if(WIN32)
+    set(imported_implib "${_qt5Core_install_prefix}/../../lib/windows/${IMPLIB_LOCATION}")
     _qt5_Core_check_file_exists(${imported_implib})
     if(NOT "${IMPLIB_LOCATION}" STREQUAL "")
         set_target_properties(Qt5::Core PROPERTIES
         "IMPORTED_IMPLIB_${Configuration}" ${imported_implib}
         )
     endif()
+endif(WIN32)
 endmacro()
 
 if (NOT TARGET Qt5::Core)
@@ -182,15 +197,20 @@ if (NOT TARGET Qt5::Core)
         )
     endif()
 
+if(WIN32)
     _populate_Core_target_properties(RELEASE "Qt5Core.dll" "libQt5Core.a" FALSE)
 
     if (EXISTS
-        "${_qt5Core_install_prefix}/bin/Qt5Core.dll"
+        "${_qt5Core_install_prefix}/bin/windows/Qt5Core.dll"
       AND EXISTS
-        "${_qt5Core_install_prefix}/lib/libQt5Core.a" )
+        "${_qt5Core_install_prefix}/lib/windows/libQt5Core.a" )
         _populate_Core_target_properties(DEBUG "Qt5Core.dll" "libQt5Core.a" FALSE)
     endif()
+endif(WIN32)
 
+if(UNIX)
+    _populate_Core_target_properties(RELEASE "libQt5Core.so.5.14.1" "" FALSE)
+endif(UNIX)
 
 
 

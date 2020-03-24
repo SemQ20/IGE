@@ -2,9 +2,14 @@
 if (NOT TARGET Qt5::qmake)
     add_executable(Qt5::qmake IMPORTED)
 
-    set(imported_location "${_qt5Core_install_prefix}/../../bin/qmake.exe")
+    set(imported_location "${_qt5Core_install_prefix}/../../bin/windows/qmake.exe")
     _qt5_Core_check_file_exists(${imported_location})
 
+#FOR UNIX
+if(UNIX)
+    set(imported_location "${_qt5Core_install_prefix}/../../bin/linux/qmake")
+    _qt5_Core_check_file_exists(${imported_location})
+endif(UNIX)
     set_target_properties(Qt5::qmake PROPERTIES
         IMPORTED_LOCATION ${imported_location}
     )
@@ -13,9 +18,14 @@ endif()
 if (NOT TARGET Qt5::moc)
     add_executable(Qt5::moc IMPORTED)
 
-    set(imported_location "${_qt5Core_install_prefix}/../../bin/moc.exe")
+    set(imported_location "${_qt5Core_install_prefix}/../../bin/windows/moc.exe")
     _qt5_Core_check_file_exists(${imported_location})
 
+#FOR UNIX
+if(UNIX)
+    set(imported_location "${_qt5Core_install_prefix}/../../bin/linux/moc")
+    _qt5_Core_check_file_exists(${imported_location})
+endif(UNIX)
     set_target_properties(Qt5::moc PROPERTIES
         IMPORTED_LOCATION ${imported_location}
     )
@@ -26,9 +36,13 @@ endif()
 if (NOT TARGET Qt5::rcc)
     add_executable(Qt5::rcc IMPORTED)
 
-    set(imported_location "${_qt5Core_install_prefix}/../../bin/rcc.exe")
+    set(imported_location "${_qt5Core_install_prefix}/../../bin/windows/rcc.exe")
     _qt5_Core_check_file_exists(${imported_location})
-
+#FOR UNIX
+if(UNIX)
+    set(imported_location "${_qt5Core_install_prefix}/../../bin/linux/rcc")
+    _qt5_Core_check_file_exists(${imported_location})
+endif(UNIX)
     set_target_properties(Qt5::rcc PROPERTIES
         IMPORTED_LOCATION ${imported_location}
     )
@@ -69,6 +83,9 @@ set(Qt5_POSITION_INDEPENDENT_CODE True)
 # "reduce relocations" is active. For backward compatibility only, Qt accepts
 # the use of -fPIE for GCC 4.x versions.
 set_property(TARGET Qt5::Core APPEND PROPERTY INTERFACE_COMPILE_OPTIONS )
+if(UNIX)
+    set_property(TARGET Qt5::Core APPEND PROPERTY INTERFACE_COMPILE_OPTIONS -fPIC)
+endif(UNIX)
 
 # TODO Qt6: Remove
 set(Qt5Core_EXECUTABLE_COMPILE_FLAGS "")
@@ -80,14 +97,14 @@ set_property(TARGET Qt5::Core APPEND PROPERTY INTERFACE_COMPILE_DEFINITIONS $<$<
 set_property(TARGET Qt5::Core PROPERTY INTERFACE_COMPILE_FEATURES cxx_decltype)
 
 
-
+if(WIN32)
 set(Qt5Core_QTMAIN_LIBRARIES Qt5::WinMain)
 
 if (NOT TARGET Qt5::WinMain)
     add_library(Qt5::WinMain STATIC IMPORTED)
 
     set_property(TARGET Qt5::WinMain APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-    set(imported_location "${_qt5Core_install_prefix}/../../lib/libqtmain.a")
+    set(imported_location "${_qt5Core_install_prefix}/../../lib/windows/libqtmain.a")
 
     set_target_properties(Qt5::WinMain PROPERTIES
         IMPORTED_LOCATION_RELEASE ${imported_location}
@@ -118,6 +135,12 @@ if (NOT TARGET Qt5::WinMain)
         unset(_isPolicyNEW)
     endif()
 endif()
+endif(WIN32)
+
+if(UNIX)
+    set(QT_VISIBILITY_AVAILABLE "True")
+endif(UNIX)
+
 
 get_filename_component(_Qt5CoreConfigDir ${CMAKE_CURRENT_LIST_FILE} PATH)
 
