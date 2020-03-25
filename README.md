@@ -17,4 +17,6 @@ Used frameworks:
 [QT](https://github.com/qt)
 [Vulkan](https://github.com/KhronosGroup)
 [GLM](https://github.com/g-truc/glm)
-[OpenAL](https://github.com/kcat/openal-soft)
+[OpenAL](https://github.com/kcat/openal-soft)  
+
+1 task -[]
