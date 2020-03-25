@@ -19,5 +19,5 @@ Used frameworks:
 [GLM](https://github.com/g-truc/glm)
 [OpenAL](https://github.com/kcat/openal-soft)  
 
-- [ ] one task  
+one task - [ ]
 
