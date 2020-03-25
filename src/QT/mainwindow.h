@@ -17,13 +17,11 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-
 private slots:
-    void on_gitHubLink_clicked();
     void on_newScene_clicked();
-
+    void on_gitHubLink_clicked();
 private:
     Ui::MainWindow *ui;
-    QString link="https://github.com/SemQ20?tab=repositories";
+    QString link="https://github.com/SemQ20/IGE";
 };
 #endif // MAINWINDOW_H

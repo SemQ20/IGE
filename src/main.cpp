@@ -1,7 +1,9 @@
 #include "mainwindow.h"
-#include "glMainWindow.h"
+#include "glmainwindow.h"
+#include "guiige.h"
 
 #include "QtWidgets/QApplication"
+
 
 int main(int argc, char *argv[])
 {
