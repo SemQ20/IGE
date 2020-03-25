@@ -1,5 +1,5 @@
 # Intelligent Graphical Engine
-Little single project
+Little single project  
 Cross-platform graphical engine  
 
 | Platform | Available |
