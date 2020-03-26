@@ -12,8 +12,7 @@ For windows building go to build folder and use make_release.bat
 
 Used frameworks:
 
-[GLFW](https://github.com/glfw/glfw)   
-[Vulkan](https://github.com/KhronosGroup)  
+[GLFW](https://github.com/glfw/glfw)     
 [GLM](https://github.com/g-truc/glm)  
 [QT](https://github.com/qt)  
 [ImGui](https://github.com/ocornut/imgui)     
