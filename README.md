@@ -15,7 +15,6 @@ Used frameworks:
 [GLFW](https://github.com/glfw/glfw)   
 [Vulkan](https://github.com/KhronosGroup)  
 [GLM](https://github.com/g-truc/glm)  
-[OpenAL](https://github.com/kcat/openal-soft)  
 [QT](https://github.com/qt)  
 [ImGui](https://github.com/ocornut/imgui)     
 
