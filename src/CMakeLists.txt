@@ -8,6 +8,8 @@ set(Qt5Gui_DIR "../cmake/Qt5Gui")
 set(Qt5_DIR "../cmake/Qt5")
 #GLFW cmake config dir
 set(glfw3_DIR "../cmake/GLFW")
+#glm cmake config dir
+set(glm_DIR "../cmake/glm")
 
 #include all source files
 file(GLOB QT_DIR ${PROJECT_SOURCE_DIR}/src/QT/*cpp)
