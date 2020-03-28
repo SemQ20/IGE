@@ -49,3 +49,7 @@ if(WIN32)
     target_link_libraries(${TARGET} PRIVATE gdi32)
 endif(WIN32)
 
+if(UNIX)
+    target_link_libraries(${TARGET} PRIVATE X11)
+endif(UNIX)
+
