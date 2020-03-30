@@ -1,5 +1,6 @@
 
 #include "ui_mainwindow.h"
+#include "../vulkan/vulkan.h"
 #include "mainwindow.h"
 #include "QtCore/QUrl"
 #include "QtGUI/QDesktopServices"
@@ -12,8 +13,6 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow){
     ui->setupUi(this);
 }
-
-
 
 MainWindow::~MainWindow(){
     delete ui;

@@ -18,6 +18,14 @@ file(GLOB GUI_DIR ${PROJECT_SOURCE_DIR}/src/imgui/*.cpp)
 
 set(MAIN_SOURCES main.cpp)
 
+FIND_PACKAGE(Vulkan REQUIRED)
+IF(WIN32 AND NOT MSVC)
+    GET_FILENAME_COMPONENT(Vulkan_LIBRARY_DIR ${Vulkan_LIBRARY} DIRECTORY)
+    IF(NOT "${Vulkan_LIBRARY_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
+        MESSAGE(WARNING "If linking to Vulkan fails, try copying vulkan-1.dll to the ${CMAKE_BINARY_DIR} and then set Vulkan_LIBRARY to ${CMAKE_BINARY_DIR}/vulkan-1.dll")
+    ENDIF(NOT "${Vulkan_LIBRARY_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
+ENDIF(WIN32 AND NOT MSVC)
+
 add_executable(${TARGET} WIN32
     ${MAIN_SOURCES} 
     ${QT_DIR} 
@@ -37,6 +45,8 @@ find_package(Qt5 COMPONENTS Gui REQUIRED)
 find_package(OpenGL REQUIRED)
 #find glfw3 library
 find_package(glfw3 REQUIRED)
+#find Vulkan API library
+find_package(Vulkan)
 
 #links all libraries to project
 target_link_libraries(${TARGET} PRIVATE Qt5::Widgets)
@@ -45,6 +55,8 @@ target_link_libraries(${TARGET} PRIVATE Qt5::Gui)
 target_link_libraries(${TARGET} PRIVATE OpenGL::GL)
 target_link_libraries(${TARGET} PRIVATE opengl32)
 target_link_libraries(${TARGET} PRIVATE glfw3)
+target_link_libraries(${TARGET} PRIVATE ${Vulkan_LIBRARY})
+
 if(WIN32)
     target_link_libraries(${TARGET} PRIVATE gdi32)
 endif(WIN32)
