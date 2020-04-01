@@ -11,7 +11,7 @@ Cross-platform graphical engine
 For windows building go to build folder and use make_release.bat
 
 Used frameworks:  
-| Framework | Uses |
+| Framework | Perfomance |
 |:--------:|:---------:|  
 | [GLFW](https://github.com/glfw/glfw) | Cross-platform library for OpenGL |  
 | [Vulkan](https://github.com/KhronosGroup/Vulkan-Hpp) | Cross-platform low-level GL |   
