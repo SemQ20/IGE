@@ -24,5 +24,6 @@ Compilers:
 |:--------:|:---------:|:--------:|:---------:|  
 | Windows x64 | :heavy_check_mark: | :x: In work | :x: In work |  
 | Linux | :x: In work | :x: In work | not available |   
+| Mac OS | :x: In work | :x: In work | :x: In work |
 
 
