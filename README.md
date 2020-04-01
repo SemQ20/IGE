@@ -17,7 +17,7 @@ Used frameworks:
 | [QT](https://github.com/qt) | Cross-platform GUI libraries |
 | [ImGui](https://github.com/ocornut/imgui) | Cross-platform GUI |
 
-Compilers:
+Compilers:  
 | Platform | MinGW | Clang | MVSC | 
 | Windows x64 |:heavy_check_mark:| :x: In work | :x: In work |
 | Linux | :x: In work |:x: In work| not available |
