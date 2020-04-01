@@ -1,5 +1,5 @@
 #check for minimum required cmake version
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.8)
 
 #set name project and enable programming language for project
 project(IGE LANGUAGES C CXX)
@@ -7,7 +7,6 @@ set(TARGET IGE)
 
 #set standarts for c c++
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED on)
 
 #set c++ flags for compiler
