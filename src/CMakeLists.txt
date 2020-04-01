@@ -15,6 +15,7 @@ set(glm_DIR "../cmake/glm")
 file(GLOB QT_DIR ${PROJECT_SOURCE_DIR}/src/QT/*cpp)
 file(GLOB GL3W_DIR ${PROJECT_SOURCE_DIR}/src/gl3w/*.c)
 file(GLOB GUI_DIR ${PROJECT_SOURCE_DIR}/src/imgui/*.cpp)
+file(GLOB SDL2_DIR ${PROJECT_SOURCE_DIR}/src/SDL2/*.c)
 
 set(MAIN_SOURCES main.cpp)
 
@@ -31,6 +32,7 @@ add_executable(${TARGET} WIN32
     ${QT_DIR} 
     ${GL3W_DIR} 
     ${GUI_DIR}
+    ${SDL2_DIR}
 )
 #win32 delete console from application
 #in other system win32 was ignored
@@ -47,6 +49,10 @@ find_package(OpenGL REQUIRED)
 find_package(glfw3 REQUIRED)
 #find Vulkan API library
 find_package(Vulkan)
+#find SDL library
+find_package(SDL2 REQUIRED)
+#find OpenAl library
+find_package(openal REQUIRED)
 
 #links all libraries to project
 target_link_libraries(${TARGET} PRIVATE Qt5::Widgets)
@@ -56,9 +62,11 @@ target_link_libraries(${TARGET} PRIVATE OpenGL::GL)
 target_link_libraries(${TARGET} PRIVATE opengl32)
 target_link_libraries(${TARGET} PRIVATE glfw3)
 target_link_libraries(${TARGET} PRIVATE ${Vulkan_LIBRARY})
+target_link_libraries(${TARGET} PRIVATE SDL2)
 
 if(WIN32)
     target_link_libraries(${TARGET} PRIVATE gdi32)
+    target_link_libraries(${TARGET} PRIVATE openal32)
 endif(WIN32)
 
 if(UNIX)
