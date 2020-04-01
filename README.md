@@ -6,7 +6,7 @@ Cross-platform graphical engine
 |:--------:|:---------:|  
 | Windows_x64 |:heavy_check_mark:|  
 | Linux    | :x: In work |  
-| Mac Os   | :x: In work |  
+| Mac OS   | :x: In work |  
 
 For windows building go to build folder and use make_release.bat
 
