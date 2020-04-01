@@ -17,10 +17,12 @@ Used frameworks:
 | [Vulkan](https://github.com/KhronosGroup/Vulkan-Hpp) | Cross-platform low-level GL |   
 | [GLM](https://github.com/g-truc/glm) | Cross-platform library math for OpenGL |  
 | [QT](https://github.com/qt) | Cross-platform GUI libraries |  
+| [OpenAL Soft(https://github.com/kcat/openal-soft)] | Cross-platform low-level sound library |  
+| [SDL2]()| Cross-platform low-level multimedia library|
 | [ImGui](https://github.com/ocornut/imgui) | Cross-platform GUI |  
 
 Compilers:  
-| Platform | MinGW | Clang | MVSC |  
+| Platform | MinGW64 | Clang | MVSC |  
 |:--------:|:---------:|:--------:|:---------:|  
 | Windows x64 | :heavy_check_mark: | :x: In work | :x: In work |  
 | Linux | :x: In work | :x: In work | not available |   
