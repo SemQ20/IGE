@@ -24,7 +24,7 @@ Used frameworks:
 Compilers:  
 | Platform | MinGW64 | Clang | MVSC |  
 |:--------:|:---------:|:--------:|:---------:|  
-| Windows x64 | :heavy_check_mark: | :x: In work | :x: In work |  
+| Windows x64 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  
 | Linux | :x: In work | :x: In work | not available |   
 | Mac OS | :x: In work | :x: In work | :x: In work |
 
