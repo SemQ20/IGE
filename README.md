@@ -22,10 +22,10 @@ Used frameworks:
 | [ImGui](https://github.com/ocornut/imgui) | Cross-platform GUI |  
 
 Compilers:  
-| Platform | MinGW64 | Clang | MVSC |  
-|:--------:|:---------:|:--------:|:---------:|  
-| Windows x64 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  
-| Linux | :x: In work | :x: In work | not available |   
-| Mac OS | :x: In work | :x: In work | :x: In work |
+| Platform | MinGW64 | Clang |   
+|:--------:|:---------:|:--------:|  
+| Windows x64 | :heavy_check_mark: | :heavy_check_mark: |  
+| Linux | :x: In work | :x: In work |  
+| Mac OS | :x: In work | :x: In work |  
 
 
