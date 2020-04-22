@@ -16,7 +16,7 @@ Used frameworks:
 | [GLFW](https://github.com/glfw/glfw) | Cross-platform library for OpenGL |  
 | [Vulkan](https://github.com/KhronosGroup/Vulkan-Hpp) | Cross-platform low-level GL |   
 | [GLM](https://github.com/g-truc/glm) | Cross-platform library math for OpenGL |  
-| [QT](https://github.com/qt) | Cross-platform GUI libraries |  
+| [QT](https://github.com/qt) | Cross-platform libraries |  
 | [OpenAL Soft](https://github.com/kcat/openal-soft) | Cross-platform low-level sound library |  
 | [SDL2](https://www.libsdl.org/)| Cross-platform low-level multimedia library|
 | [ImGui](https://github.com/ocornut/imgui) | Cross-platform GUI |  
