@@ -6,7 +6,6 @@ Cross-platform graphical engine
 |:--------:|:---------:|  
 | Windows_x64 |:heavy_check_mark:|  
 | Linux    | :x: In work |  
-| Mac OS   | :x: In work |  
 
 For windows building go to build folder and use make_release.bat
 
@@ -26,6 +25,6 @@ Compilers:
 |:--------:|:---------:|:--------:|  
 | Windows x64 | :heavy_check_mark: | :heavy_check_mark: |  
 | Linux | :x: In work | :x: In work |  
-| Mac OS | :x: In work | :x: In work |  
+
 
 
