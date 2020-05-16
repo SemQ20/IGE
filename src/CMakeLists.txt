@@ -10,12 +10,14 @@ set(Qt5_DIR "../cmake/Qt5")
 set(glfw3_DIR "../cmake/GLFW")
 #glm cmake config dir
 set(glm_DIR "../cmake/glm")
+#SDL2 cmake config dir
+set(SDL2_DIR "../cmake/SDL2")
 
 #include all source files
-file(GLOB QT_DIR ${PROJECT_SOURCE_DIR}/src/QT/*cpp)
-file(GLOB GL3W_DIR ${PROJECT_SOURCE_DIR}/src/gl3w/*.c)
-file(GLOB GUI_DIR ${PROJECT_SOURCE_DIR}/src/imgui/*.cpp)
-file(GLOB SDL2_DIR ${PROJECT_SOURCE_DIR}/src/SDL2/*.c)
+file(GLOB QT_SRC ${PROJECT_SOURCE_DIR}/src/QT/*cpp)
+file(GLOB GL3W_SRC ${PROJECT_SOURCE_DIR}/src/gl3w/*.c)
+file(GLOB GUI_SRC ${PROJECT_SOURCE_DIR}/src/imgui/*.cpp)
+file(GLOB SDL2_SRC ${PROJECT_SOURCE_DIR}/src/SDL2/*.c)
 
 set(MAIN_SOURCES main.cpp)
 
@@ -29,10 +31,10 @@ ENDIF(WIN32 AND NOT MSVC)
 
 add_executable(${TARGET} WIN32
     ${MAIN_SOURCES} 
-    ${QT_DIR} 
-    ${GL3W_DIR} 
-    ${GUI_DIR}
-    ${SDL2_DIR}
+    ${QT_SRC} 
+    ${GL3W_SRC} 
+    ${GUI_SRC}
+    ${SDL2_SRC}
 )
 #win32 delete console from application
 #in other system win32 was ignored

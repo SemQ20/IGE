@@ -10,3 +10,4 @@ del Qt5Gui.dll
 del Qt5Widgets.dll
 del IGE.exe
 del imgui.ini
+del SDL2.dll

@@ -13,6 +13,6 @@ cd Debug
 mkdir resources
 xcopy "../../resources" "../Debug/resources" /H /Y /C
 cd src
-copy RGE.exe ..
+copy IGE.exe ..
 cd ..
 pause

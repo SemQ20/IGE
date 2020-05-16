@@ -8,5 +8,6 @@ del libwinpthread-1.dll
 del Qt5Core.dll
 del Qt5Gui.dll
 del Qt5Widgets.dll
-del IGExx.exe
+del IGE.exe
 del imgui.ini
+del SDL2.dll
