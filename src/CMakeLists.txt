@@ -49,8 +49,6 @@ find_package(Qt5 COMPONENTS Gui REQUIRED)
 find_package(OpenGL REQUIRED)
 #find glfw3 library
 find_package(glfw3 REQUIRED)
-#find Vulkan API library
-find_package(Vulkan)
 #find SDL library
 find_package(SDL2 REQUIRED)
 #find OpenAl library
