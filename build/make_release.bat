@@ -1,6 +1,6 @@
 echo
-cmake -B Release -DCMAKE_BUILD_TYPE=Release -G "MinGW Makefiles" ..
-mingw32-make --directory=Release
+cmake -B Release -DCMAKE_BUILD_TYPE=Release -G "MSYS Makefiles" ..
+make --directory=Release
 cd Release
 rd /s /q CMakeFiles
 rd /s /q RGExx_autogen
