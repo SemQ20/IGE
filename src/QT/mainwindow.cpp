@@ -6,17 +6,13 @@
 #elif defined(VK_USE_PLATFORM_WAYLAND_KHR)
 #include <linux/input.h>
 #endif
-#define VULKAN_HPP_NO_SMART_HANDLE
-#define VULKAN_HPP_NO_EXCEPTIONS
-#define VULKAN_HPP_TYPESAFE_CONVERSION
-#include "../vulkan/vulkan.hpp"
-#include "../vulkan/vk_sdk_platform.h"
+
 
 #include "mainwindow.h"
-#include "QtCore/QUrl"
-#include "QtGUI/QDesktopServices"
-#include "glmainwindow.h"
-#include "guiige.h"
+#include <QUrl>
+#include <QDesktopServices>
+#include "glMainWindow.h"
+#include "guiIGE.h"
 #include "scene.hpp"
 
 MainWindow::MainWindow(QWidget *parent)

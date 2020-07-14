@@ -1,7 +1,7 @@
 #ifndef SCENE_HPP
 #define SCENE_HPP
 
-#include "glmainwindow.h"
+#include "glMainWindow.h"
 #include <memory>
 namespace IGE {
     namespace Scene{

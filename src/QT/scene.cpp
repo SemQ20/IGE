@@ -1,5 +1,5 @@
 #include "scene.hpp"
-#include "guiige.h"
+#include "guiIGE.h"
 
 void IGE::Scene::createScene(GLWindow glMWind,int height, int weight, const char* title,
         GLFWmonitor* monitor, GLFWwindow* share){

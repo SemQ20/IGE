@@ -5,7 +5,7 @@ Cross-platform graphical engine
 | Platform | Available |
 |:--------:|:---------:|  
 | Windows_x64 |:heavy_check_mark:|  
-| Linux    | :x: In work |  
+| Linux    | :heavy_check_mark: |  
 
 For windows building go to build folder and use make_release.bat
 
@@ -21,10 +21,10 @@ Used frameworks:
 | [ImGui](https://github.com/ocornut/imgui) | Cross-platform GUI |  
 
 Compilers:  
-| Platform | MinGW64 | Clang |   
+| Platform | MSYS/MinGW64/GCC | Clang |   
 |:--------:|:---------:|:--------:|  
 | Windows x64 | :heavy_check_mark: | :heavy_check_mark: |  
-| Linux | :x: In work | :x: In work |  
+| Linux | :heavy_check_mark: | :heavy_check_mark: |  
 
 
 
