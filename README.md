@@ -24,7 +24,8 @@ Compilers:
 | Platform | MSYS/MinGW64/GCC | Clang |   
 |:--------:|:---------:|:--------:|  
 | Windows x64 | :heavy_check_mark: | :heavy_check_mark: |  
-| Linux | :heavy_check_mark: | :heavy_check_mark: |  
+| Linux(Ubuntu 20.x.x) | :heavy_check_mark: | :heavy_check_mark: |  
+| Linux(Arch kernel 5.7.x) | :heavy_check_mark: | :heavy_check_mark: |  
 
 
 

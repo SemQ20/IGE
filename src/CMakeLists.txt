@@ -23,13 +23,13 @@ file(GLOB SDL2_SRC ${PROJECT_SOURCE_DIR}/src/SDL2/*.c)
 
 set(MAIN_SOURCES main.cpp)
 
-#FIND_PACKAGE(Vulkan REQUIRED)
-#IF(WIN32 AND NOT MSVC)
-#   GET_FILENAME_COMPONENT(Vulkan_LIBRARY_DIR ${Vulkan_LIBRARY} DIRECTORY)
-#    IF(NOT "${Vulkan_LIBRARY_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
-#        MESSAGE(WARNING "If linking to Vulkan fails, try copying vulkan-1.dll to the ${CMAKE_BINARY_DIR} and then set Vulkan_LIBRARY to ${CMAKE_BINARY_DIR}/vulkan-1.dll")
-#    ENDIF(NOT "${Vulkan_LIBRARY_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
-#ENDIF(WIN32 AND NOT MSVC)
+FIND_PACKAGE(Vulkan REQUIRED)
+IF(WIN32 AND NOT MSVC)
+   GET_FILENAME_COMPONENT(Vulkan_LIBRARY_DIR ${Vulkan_LIBRARY} DIRECTORY)
+    IF(NOT "${Vulkan_LIBRARY_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
+       MESSAGE(WARNING "If linking to Vulkan fails, try copying vulkan-1.dll to the ${CMAKE_BINARY_DIR} and then set Vulkan_LIBRARY to ${CMAKE_BINARY_DIR}/vulkan-1.dll")
+    ENDIF(NOT "${Vulkan_LIBRARY_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
+ENDIF(WIN32 AND NOT MSVC)
 
 add_executable(${TARGET} WIN32
     ${MAIN_SOURCES} 
@@ -61,9 +61,8 @@ target_link_libraries(${TARGET} PRIVATE Qt5::Widgets)
 target_link_libraries(${TARGET} PRIVATE Qt5::Core)
 target_link_libraries(${TARGET} PRIVATE Qt5::Gui)
 target_link_libraries(${TARGET} PRIVATE OpenGL::GL)
-target_link_libraries(${TARGET} PRIVATE OpenGL)
 target_link_libraries(${TARGET} PRIVATE glfw3)
-#target_link_libraries(${TARGET} PRIVATE ${Vulkan_LIBRARY})
+target_link_libraries(${TARGET} PRIVATE ${Vulkan_LIBRARY})
 target_link_libraries(${TARGET} PRIVATE SDL2)
 
 if(WIN32)
